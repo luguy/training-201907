@@ -4,7 +4,7 @@
 1.  idea: Java development tool
 2.  postman
 3.  Database: postgres
-4.  DBeaver, Database Management Tool
+4.  DBeaver: database management tool
 5.  vscode
 6.  backend: spring boot
 7.  backend: mybatis
