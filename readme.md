@@ -47,7 +47,7 @@
 
 ## Timeline
 
-- [Tilemline](http://git.augmentum.com.cn/edgar.yuan/training-201907/tree/develop/doc/ux/Timeline.xlsx)
+- [Tilemline](http://git.augmentum.com.cn/edgar.yuan/training-201907/blob/develop/doc/Timeline.xlsx)
 
 
 
