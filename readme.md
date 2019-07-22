@@ -33,7 +33,7 @@
 
 ## Design
 
-- /doc/ux
+- [ux](http://git.augmentum.com.cn/edgar.yuan/training-201907/tree/develop/doc/ux)
 
 ## Target
 ### Basic target:
@@ -44,6 +44,11 @@
 - Department management.
 - Doctor management
 - Patient management
+
+## Timeline
+
+- [Tilemline](http://git.augmentum.com.cn/edgar.yuan/training-201907/tree/develop/doc/ux/Timeline.xlsx)
+
 
 
 
