@@ -1,0 +1,6 @@
+# pagehelper
+pagehelper:
+  helperDialect: postgresql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
