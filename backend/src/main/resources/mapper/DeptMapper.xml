@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.augmentum.backend.dao.DeptMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.augmentum.backend.pojo.Dept" >
+    <id column="dept_id" property="deptId" jdbcType="VARCHAR" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="dept_area" property="deptArea" jdbcType="VARCHAR" />
+    <result column="dept_persons" property="deptPersons" jdbcType="INTEGER" />
+    <result column="dept_num" property="deptNum" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    dept_id, dept_name, dept_area, dept_persons, dept_num
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.com.augmentum.backend.pojo.DeptExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dept
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from dept
+    where dept_id = #{deptId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from dept
+    where dept_id = #{deptId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.com.augmentum.backend.pojo.DeptExample" >
+    delete from dept
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.com.augmentum.backend.pojo.Dept" >
+    insert into dept (dept_id, dept_name, dept_area, 
+      dept_persons, dept_num)
+    values (#{deptId,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{deptArea,jdbcType=VARCHAR}, 
+      #{deptPersons,jdbcType=INTEGER}, #{deptNum,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.augmentum.backend.pojo.Dept" >
+    insert into dept
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="deptName != null" >
+        dept_name,
+      </if>
+      <if test="deptArea != null" >
+        dept_area,
+      </if>
+      <if test="deptPersons != null" >
+        dept_persons,
+      </if>
+      <if test="deptNum != null" >
+        dept_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptArea != null" >
+        #{deptArea,jdbcType=VARCHAR},
+      </if>
+      <if test="deptPersons != null" >
+        #{deptPersons,jdbcType=INTEGER},
+      </if>
+      <if test="deptNum != null" >
+        #{deptNum,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.com.augmentum.backend.pojo.DeptExample" resultType="java.lang.Integer" >
+    select count(*) from dept
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dept
+    <set >
+      <if test="record.deptId != null" >
+        dept_id = #{record.deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptName != null" >
+        dept_name = #{record.deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptArea != null" >
+        dept_area = #{record.deptArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deptPersons != null" >
+        dept_persons = #{record.deptPersons,jdbcType=INTEGER},
+      </if>
+      <if test="record.deptNum != null" >
+        dept_num = #{record.deptNum,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dept
+    set dept_id = #{record.deptId,jdbcType=VARCHAR},
+      dept_name = #{record.deptName,jdbcType=VARCHAR},
+      dept_area = #{record.deptArea,jdbcType=VARCHAR},
+      dept_persons = #{record.deptPersons,jdbcType=INTEGER},
+      dept_num = #{record.deptNum,jdbcType=SMALLINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.augmentum.backend.pojo.Dept" >
+    update dept
+    <set >
+      <if test="deptName != null" >
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="deptArea != null" >
+        dept_area = #{deptArea,jdbcType=VARCHAR},
+      </if>
+      <if test="deptPersons != null" >
+        dept_persons = #{deptPersons,jdbcType=INTEGER},
+      </if>
+      <if test="deptNum != null" >
+        dept_num = #{deptNum,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where dept_id = #{deptId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.augmentum.backend.pojo.Dept" >
+    update dept
+    set dept_name = #{deptName,jdbcType=VARCHAR},
+      dept_area = #{deptArea,jdbcType=VARCHAR},
+      dept_persons = #{deptPersons,jdbcType=INTEGER},
+      dept_num = #{deptNum,jdbcType=SMALLINT}
+    where dept_id = #{deptId,jdbcType=VARCHAR}
+  </update>
+
+
+  <select id="selectALl" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from dept
+  </select>
+  <select id="selectNumByName" resultType="java.lang.Short" parameterType="java.lang.String">
+    select dept_num from dept where dept_name=#{deptName}
+  </select>
+</mapper>

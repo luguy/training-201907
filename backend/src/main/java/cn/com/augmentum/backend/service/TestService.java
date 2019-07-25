@@ -5,7 +5,7 @@ import cn.com.augmentum.backend.pageUtil.PageResult;
 
 /**
  * @author ：tim
- * @date ：Created in 19-7-24 下午2:17
+ * @date ：Created in 19-7-24
  * @description：Test
  * @version: 0.1$
  */

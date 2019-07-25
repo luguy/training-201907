@@ -10,4 +10,5 @@ public interface LuguyMapper {
     int insertSelective(Luguy record);
 
     List<Luguy> selectAll();
+
 }

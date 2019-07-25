@@ -32,9 +32,9 @@ public class ResultVO<T> {
         return success(null);
     }
 
-    public static ResultVO error(Integer code, String msg) {
+    public static ResultVO error(String msg) {
         ResultVO resultVO = new ResultVO();
-        resultVO.setCode(code);
+        resultVO.setCode(1);
         resultVO.setMsg(msg);
         return resultVO;
     }

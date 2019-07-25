@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * @author tim
  * @version #
- * @date Created in 19-7-24 下午2:38
+ * @date Created in 19-7-24
  * @description #
  */
 @Service
@@ -30,7 +30,7 @@ public class TestServiceImpl implements TestService {
         PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
         List<Luguy> list=luguyMapper.selectAll();
         PageResult pageResult= PageUtils.getPageResult(new PageInfo<>(list));
-        System.out.println(pageResult.getContent().get(1));
+//        System.out.println(pageResult.getContent().get(1));
         return pageResult;
     }
 }

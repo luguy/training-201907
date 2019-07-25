@@ -13,9 +13,9 @@ public class DataUtil {
         long time1 = 0;
         long time2 = 0;
         try{
-            cal.setTime(sdf.parse(date));//有效时期
+            cal.setTime(sdf.parse(date));//effective date
             time1 = cal.getTimeInMillis();
-            cal.setTime(new Date());//当前日期
+            cal.setTime(new Date());//current date
             time2 = cal.getTimeInMillis();
         }catch(Exception e){
             e.printStackTrace();
