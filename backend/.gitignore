@@ -1,3 +1,6 @@
+# generator util ignore
+src/main/java/cn/com/augmentum/hospitalregistrationsystem/generator/
+
 *.class
 
 # package file
