@@ -290,6 +290,13 @@
   </update>
 
 
+  <update id="updateStatusByPrimaryKey" parameterType="Map" >
+    update register
+    set register_status = #{registerStatus,jdbcType=SMALLINT},
+    where register_id = #{registerId,jdbcType=VARCHAR}
+  </update>
+
+
   <select id="selectAll" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />

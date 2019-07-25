@@ -13,6 +13,7 @@ import cn.com.augmentum.backend.pojo.Register;
 public interface RegisterService {
 
      ResultVO register(Register register);
-//     ResultVO registerList(PageRequest pageRequest);
      ResultVO list(String doctor, String dept,String patient,PageRequest pageRequest);
+     ResultVO updateStatus(String registerId,Integer registerStatus);
+
 }

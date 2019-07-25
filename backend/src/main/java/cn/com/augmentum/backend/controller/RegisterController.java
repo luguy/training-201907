@@ -36,4 +36,13 @@ public class RegisterController {
         PageRequest pageRequest=new PageRequest(page,size);
         return registerService.list(doctor,dept,patient,pageRequest);
     }
+
+    @PostMapping("/update")
+    public ResultVO registerUpdate(
+            @RequestParam(value = "registerId") String registerId,
+            @RequestParam(value = "registerStatus") Integer registerStatus){
+
+        return  registerService.updateStatus(registerId,registerStatus);
+    }
+
 }

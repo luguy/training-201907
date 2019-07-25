@@ -35,4 +35,6 @@ public interface RegisterMapper {
     List<Register> selectList(HashMap<Object,Object> hashMap);
 
     Integer selectMaxNumByDept(String dept);
+
+    int updateStatusByPrimaryKey(HashMap<Object,Object> hashMap);
 }

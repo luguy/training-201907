@@ -48,13 +48,6 @@ public class RegisterServiceImpl implements RegisterService {
         return ResultVO.success();
     }
 
-//    public ResultVO registerList(PageRequest pageRequest) {
-//        PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
-//        List<Register> list=registerMapper.selectAll();
-//        PageResult pageResult= PageUtils.getPageResult(new PageInfo<>(list));
-//        return ResultVO.success(pageResult);
-//    }
-
     //Generate order number based on department
     private Integer registrationForm(String dept){
         short deptNum=deptMapper.selectNumByName(dept);
@@ -94,6 +87,15 @@ public class RegisterServiceImpl implements RegisterService {
         }
         PageResult pageResult=selectListPage(hashMap,pageRequest);
         return ResultVO.success(pageResult);
+    }
+
+    @Override
+    public ResultVO updateStatus(String registerId,Integer registerStatus) {
+        HashMap<Object, Object> hashMap = new HashMap<Object, Object>();
+        hashMap.put("registerId",registerId);
+        hashMap.put("registerStatus",registerStatus);
+        registerMapper.updateStatusByPrimaryKey(hashMap);
+        return ResultVO.success();
     }
 
     private PageResult selectListPage(HashMap<Object, Object> hashMap, PageRequest pageRequest){
