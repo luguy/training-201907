@@ -1,103 +1,115 @@
 package cn.com.augmentum.backend.pojo;
 
+import java.util.Date;
+
 public class Register {
-    private String registerId;
+    private String id;
 
-    private Integer registerNum;
+    private Integer num;
 
-    private String registerDoctor;
+    private String doctorId;
 
-    private String registerDept;
+    private String deptId;
 
-    private String registerPatient;
+    private String patientId;
 
-    private Integer registerCost;
+    private Double cost;
 
-    private String registerOperator;
+    private String operator;
 
-    private Short registerType;
+    private Integer type;
 
-    private Short registerStatus;
+    private Integer status;
 
-    private String registerTime;
+    private Date updateTime;
 
-    public String getRegisterId() {
-        return registerId;
+    private Date createTime;
+
+    public String getId() {
+        return id;
     }
 
-    public void setRegisterId(String registerId) {
-        this.registerId = registerId == null ? null : registerId.trim();
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Integer getRegisterNum() {
-        return registerNum;
+    public Integer getNum() {
+        return num;
     }
 
-    public void setRegisterNum(Integer registerNum) {
-        this.registerNum = registerNum;
+    public void setNum(Integer num) {
+        this.num = num;
     }
 
-    public String getRegisterDoctor() {
-        return registerDoctor;
+    public String getDoctorId() {
+        return doctorId;
     }
 
-    public void setRegisterDoctor(String registerDoctor) {
-        this.registerDoctor = registerDoctor == null ? null : registerDoctor.trim();
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId == null ? null : doctorId.trim();
     }
 
-    public String getRegisterDept() {
-        return registerDept;
+    public String getDeptId() {
+        return deptId;
     }
 
-    public void setRegisterDept(String registerDept) {
-        this.registerDept = registerDept == null ? null : registerDept.trim();
+    public void setDeptId(String deptId) {
+        this.deptId = deptId == null ? null : deptId.trim();
     }
 
-    public String getRegisterPatient() {
-        return registerPatient;
+    public String getPatientId() {
+        return patientId;
     }
 
-    public void setRegisterPatient(String registerPatient) {
-        this.registerPatient = registerPatient == null ? null : registerPatient.trim();
+    public void setPatientId(String patientId) {
+        this.patientId = patientId == null ? null : patientId.trim();
     }
 
-    public Integer getRegisterCost() {
-        return registerCost;
+    public Double getCost() {
+        return cost;
     }
 
-    public void setRegisterCost(Integer registerCost) {
-        this.registerCost = registerCost;
+    public void setCost(Double cost) {
+        this.cost = cost;
     }
 
-    public String getRegisterOperator() {
-        return registerOperator;
+    public String getOperator() {
+        return operator;
     }
 
-    public void setRegisterOperator(String registerOperator) {
-        this.registerOperator = registerOperator == null ? null : registerOperator.trim();
+    public void setOperator(String operator) {
+        this.operator = operator == null ? null : operator.trim();
     }
 
-    public Short getRegisterType() {
-        return registerType;
+    public Integer getType() {
+        return type;
     }
 
-    public void setRegisterType(Short registerType) {
-        this.registerType = registerType;
+    public void setType(Integer type) {
+        this.type = type;
     }
 
-    public Short getRegisterStatus() {
-        return registerStatus;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setRegisterStatus(Short registerStatus) {
-        this.registerStatus = registerStatus;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public String getRegisterTime() {
-        return registerTime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setRegisterTime(String registerTime) {
-        this.registerTime = registerTime == null ? null : registerTime.trim();
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

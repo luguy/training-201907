@@ -2,11 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.com.augmentum.backend.dao.DeptMapper" >
   <resultMap id="BaseResultMap" type="cn.com.augmentum.backend.pojo.Dept" >
-    <id column="dept_id" property="deptId" jdbcType="VARCHAR" />
-    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
-    <result column="dept_area" property="deptArea" jdbcType="VARCHAR" />
-    <result column="dept_persons" property="deptPersons" jdbcType="INTEGER" />
-    <result column="dept_num" property="deptNum" jdbcType="SMALLINT" />
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    dept_id, dept_name, dept_area, dept_persons, dept_num
+    id, name, area, num, update_time, create_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.com.augmentum.backend.pojo.DeptExample" >
     select
@@ -87,11 +88,11 @@
     select 
     <include refid="Base_Column_List" />
     from dept
-    where dept_id = #{deptId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from dept
-    where dept_id = #{deptId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.com.augmentum.backend.pojo.DeptExample" >
     delete from dept
@@ -100,45 +101,53 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.com.augmentum.backend.pojo.Dept" >
-    insert into dept (dept_id, dept_name, dept_area, 
-      dept_persons, dept_num)
-    values (#{deptId,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{deptArea,jdbcType=VARCHAR}, 
-      #{deptPersons,jdbcType=INTEGER}, #{deptNum,jdbcType=SMALLINT})
+    insert into dept (id, name, area, 
+      num, update_time, create_time
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{num,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="cn.com.augmentum.backend.pojo.Dept" >
     insert into dept
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="deptId != null" >
-        dept_id,
+      <if test="id != null" >
+        id,
       </if>
-      <if test="deptName != null" >
-        dept_name,
+      <if test="name != null" >
+        name,
       </if>
-      <if test="deptArea != null" >
-        dept_area,
+      <if test="area != null" >
+        area,
       </if>
-      <if test="deptPersons != null" >
-        dept_persons,
+      <if test="num != null" >
+        num,
       </if>
-      <if test="deptNum != null" >
-        dept_num,
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="deptId != null" >
-        #{deptId,jdbcType=VARCHAR},
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
       </if>
-      <if test="deptName != null" >
-        #{deptName,jdbcType=VARCHAR},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="deptArea != null" >
-        #{deptArea,jdbcType=VARCHAR},
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
       </if>
-      <if test="deptPersons != null" >
-        #{deptPersons,jdbcType=INTEGER},
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
       </if>
-      <if test="deptNum != null" >
-        #{deptNum,jdbcType=SMALLINT},
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -151,20 +160,23 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update dept
     <set >
-      <if test="record.deptId != null" >
-        dept_id = #{record.deptId,jdbcType=VARCHAR},
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.deptName != null" >
-        dept_name = #{record.deptName,jdbcType=VARCHAR},
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.deptArea != null" >
-        dept_area = #{record.deptArea,jdbcType=VARCHAR},
+      <if test="record.area != null" >
+        area = #{record.area,jdbcType=VARCHAR},
       </if>
-      <if test="record.deptPersons != null" >
-        dept_persons = #{record.deptPersons,jdbcType=INTEGER},
+      <if test="record.num != null" >
+        num = #{record.num,jdbcType=INTEGER},
       </if>
-      <if test="record.deptNum != null" >
-        dept_num = #{record.deptNum,jdbcType=SMALLINT},
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -173,11 +185,12 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update dept
-    set dept_id = #{record.deptId,jdbcType=VARCHAR},
-      dept_name = #{record.deptName,jdbcType=VARCHAR},
-      dept_area = #{record.deptArea,jdbcType=VARCHAR},
-      dept_persons = #{record.deptPersons,jdbcType=INTEGER},
-      dept_num = #{record.deptNum,jdbcType=SMALLINT}
+    set id = #{record.id,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      area = #{record.area,jdbcType=VARCHAR},
+      num = #{record.num,jdbcType=INTEGER},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -185,37 +198,31 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.com.augmentum.backend.pojo.Dept" >
     update dept
     <set >
-      <if test="deptName != null" >
-        dept_name = #{deptName,jdbcType=VARCHAR},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="deptArea != null" >
-        dept_area = #{deptArea,jdbcType=VARCHAR},
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
       </if>
-      <if test="deptPersons != null" >
-        dept_persons = #{deptPersons,jdbcType=INTEGER},
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
       </if>
-      <if test="deptNum != null" >
-        dept_num = #{deptNum,jdbcType=SMALLINT},
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where dept_id = #{deptId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.com.augmentum.backend.pojo.Dept" >
     update dept
-    set dept_name = #{deptName,jdbcType=VARCHAR},
-      dept_area = #{deptArea,jdbcType=VARCHAR},
-      dept_persons = #{deptPersons,jdbcType=INTEGER},
-      dept_num = #{deptNum,jdbcType=SMALLINT}
-    where dept_id = #{deptId,jdbcType=VARCHAR}
+    set name = #{name,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      num = #{num,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
-
-
-  <select id="selectALl" resultMap="BaseResultMap" >
-    select
-    <include refid="Base_Column_List" />
-    from dept
-  </select>
-  <select id="selectNumByName" resultType="java.lang.Short" parameterType="java.lang.String">
-    select dept_num from dept where dept_name=#{deptName}
-  </select>
 </mapper>

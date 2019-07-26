@@ -1,73 +1,95 @@
 package cn.com.augmentum.backend.pojo;
 
+import java.util.Date;
+
 public class Doctor {
-    private String doctorId;
+    private String id;
 
-    private String doctorName;
+    private String name;
 
-    private Short doctorGender;
+    private Integer gender;
 
-    private String doctorDept;
+    private String deptId;
 
-    private String doctorPosition;
+    private String position;
 
-    private String doctorPhone;
+    private String phone;
 
-    private String doctorHospital;
+    private String hospital;
 
-    public String getDoctorId() {
-        return doctorId;
+    private Date updateTime;
+
+    private Date createTime;
+
+    public String getId() {
+        return id;
     }
 
-    public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId == null ? null : doctorId.trim();
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public String getDoctorName() {
-        return doctorName;
+    public String getName() {
+        return name;
     }
 
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName == null ? null : doctorName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public Short getDoctorGender() {
-        return doctorGender;
+    public Integer getGender() {
+        return gender;
     }
 
-    public void setDoctorGender(Short doctorGender) {
-        this.doctorGender = doctorGender;
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 
-    public String getDoctorDept() {
-        return doctorDept;
+    public String getDeptId() {
+        return deptId;
     }
 
-    public void setDoctorDept(String doctorDept) {
-        this.doctorDept = doctorDept == null ? null : doctorDept.trim();
+    public void setDeptId(String deptId) {
+        this.deptId = deptId == null ? null : deptId.trim();
     }
 
-    public String getDoctorPosition() {
-        return doctorPosition;
+    public String getPosition() {
+        return position;
     }
 
-    public void setDoctorPosition(String doctorPosition) {
-        this.doctorPosition = doctorPosition == null ? null : doctorPosition.trim();
+    public void setPosition(String position) {
+        this.position = position == null ? null : position.trim();
     }
 
-    public String getDoctorPhone() {
-        return doctorPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setDoctorPhone(String doctorPhone) {
-        this.doctorPhone = doctorPhone == null ? null : doctorPhone.trim();
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
-    public String getDoctorHospital() {
-        return doctorHospital;
+    public String getHospital() {
+        return hospital;
     }
 
-    public void setDoctorHospital(String doctorHospital) {
-        this.doctorHospital = doctorHospital == null ? null : doctorHospital.trim();
+    public void setHospital(String hospital) {
+        this.hospital = hospital == null ? null : hospital.trim();
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

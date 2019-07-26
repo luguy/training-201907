@@ -2,8 +2,6 @@ package cn.com.augmentum.backend.dao;
 
 import cn.com.augmentum.backend.pojo.Register;
 import cn.com.augmentum.backend.pojo.RegisterExample;
-
-import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,7 +10,7 @@ public interface RegisterMapper {
 
     int deleteByExample(RegisterExample example);
 
-    int deleteByPrimaryKey(String registerId);
+    int deleteByPrimaryKey(String id);
 
     int insert(Register record);
 
@@ -20,7 +18,7 @@ public interface RegisterMapper {
 
     List<Register> selectByExample(RegisterExample example);
 
-    Register selectByPrimaryKey(String registerId);
+    Register selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Register record, @Param("example") RegisterExample example);
 
@@ -29,10 +27,4 @@ public interface RegisterMapper {
     int updateByPrimaryKeySelective(Register record);
 
     int updateByPrimaryKey(Register record);
-
-    List<Register> selectAll();
-
-    List<Register> selectList(HashMap<Object,Object> hashMap);
-
-    Integer selectMaxNumByDept(String dept);
 }

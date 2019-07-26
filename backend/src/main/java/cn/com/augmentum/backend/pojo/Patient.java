@@ -1,63 +1,85 @@
 package cn.com.augmentum.backend.pojo;
 
+import java.util.Date;
+
 public class Patient {
-    private String patientId;
+    private String id;
 
-    private String patientName;
+    private String name;
 
-    private Short patientGender;
+    private Integer gender;
 
-    private String patientSickAge;
+    private String sickAge;
 
-    private String patientBirthday;
+    private Date birthday;
 
-    private Integer patientBmi;
+    private Integer bmi;
 
-    public String getPatientId() {
-        return patientId;
+    private Date updateTime;
+
+    private Date createTime;
+
+    public String getId() {
+        return id;
     }
 
-    public void setPatientId(String patientId) {
-        this.patientId = patientId == null ? null : patientId.trim();
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public String getPatientName() {
-        return patientName;
+    public String getName() {
+        return name;
     }
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName == null ? null : patientName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public Short getPatientGender() {
-        return patientGender;
+    public Integer getGender() {
+        return gender;
     }
 
-    public void setPatientGender(Short patientGender) {
-        this.patientGender = patientGender;
+    public void setGender(Integer gender) {
+        this.gender = gender;
     }
 
-    public String getPatientSickAge() {
-        return patientSickAge;
+    public String getSickAge() {
+        return sickAge;
     }
 
-    public void setPatientSickAge(String patientSickAge) {
-        this.patientSickAge = patientSickAge == null ? null : patientSickAge.trim();
+    public void setSickAge(String sickAge) {
+        this.sickAge = sickAge == null ? null : sickAge.trim();
     }
 
-    public String getPatientBirthday() {
-        return patientBirthday;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setPatientBirthday(String patientBirthday) {
-        this.patientBirthday = patientBirthday == null ? null : patientBirthday.trim();
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
-    public Integer getPatientBmi() {
-        return patientBmi;
+    public Integer getBmi() {
+        return bmi;
     }
 
-    public void setPatientBmi(Integer patientBmi) {
-        this.patientBmi = patientBmi;
+    public void setBmi(Integer bmi) {
+        this.bmi = bmi;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

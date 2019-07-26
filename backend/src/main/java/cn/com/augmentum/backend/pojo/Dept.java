@@ -1,53 +1,65 @@
 package cn.com.augmentum.backend.pojo;
 
+import java.util.Date;
+
 public class Dept {
-    private String deptId;
+    private String id;
 
-    private String deptName;
+    private String name;
 
-    private String deptArea;
+    private String area;
 
-    private Integer deptPersons;
+    private Integer num;
 
-    private Short deptNum;
+    private Date updateTime;
 
-    public String getDeptId() {
-        return deptId;
+    private Date createTime;
+
+    public String getId() {
+        return id;
     }
 
-    public void setDeptId(String deptId) {
-        this.deptId = deptId == null ? null : deptId.trim();
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public String getDeptName() {
-        return deptName;
+    public String getName() {
+        return name;
     }
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName == null ? null : deptName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public String getDeptArea() {
-        return deptArea;
+    public String getArea() {
+        return area;
     }
 
-    public void setDeptArea(String deptArea) {
-        this.deptArea = deptArea == null ? null : deptArea.trim();
+    public void setArea(String area) {
+        this.area = area == null ? null : area.trim();
     }
 
-    public Integer getDeptPersons() {
-        return deptPersons;
+    public Integer getNum() {
+        return num;
     }
 
-    public void setDeptPersons(Integer deptPersons) {
-        this.deptPersons = deptPersons;
+    public void setNum(Integer num) {
+        this.num = num;
     }
 
-    public Short getDeptNum() {
-        return deptNum;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setDeptNum(Short deptNum) {
-        this.deptNum = deptNum;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

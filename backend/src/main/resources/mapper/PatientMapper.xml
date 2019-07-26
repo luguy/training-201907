@@ -2,12 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.com.augmentum.backend.dao.PatientMapper" >
   <resultMap id="BaseResultMap" type="cn.com.augmentum.backend.pojo.Patient" >
-    <id column="patient_id" property="patientId" jdbcType="CHAR" />
-    <result column="patient_name" property="patientName" jdbcType="VARCHAR" />
-    <result column="patient_gender" property="patientGender" jdbcType="SMALLINT" />
-    <result column="patient_sick_age" property="patientSickAge" jdbcType="VARCHAR" />
-    <result column="patient_birthday" property="patientBirthday" jdbcType="VARCHAR" />
-    <result column="patient_bmi" property="patientBmi" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="INTEGER" />
+    <result column="sick_age" property="sickAge" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="bmi" property="bmi" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    patient_id, patient_name, patient_gender, patient_sick_age, patient_birthday, patient_bmi
+    id, name, gender, sick_age, birthday, bmi, update_time, create_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.com.augmentum.backend.pojo.PatientExample" >
     select
@@ -88,11 +90,11 @@
     select 
     <include refid="Base_Column_List" />
     from patient
-    where patient_id = #{patientId,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from patient
-    where patient_id = #{patientId,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="cn.com.augmentum.backend.pojo.PatientExample" >
     delete from patient
@@ -101,53 +103,65 @@
     </if>
   </delete>
   <insert id="insert" parameterType="cn.com.augmentum.backend.pojo.Patient" >
-    insert into patient (patient_id, patient_name, patient_gender, 
-      patient_sick_age, patient_birthday, patient_bmi
-      )
-    values (#{patientId,jdbcType=CHAR}, #{patientName,jdbcType=VARCHAR}, #{patientGender,jdbcType=SMALLINT}, 
-      #{patientSickAge,jdbcType=VARCHAR}, #{patientBirthday,jdbcType=VARCHAR}, #{patientBmi,jdbcType=INTEGER}
-      )
+    insert into patient (id, name, gender, 
+      sick_age, birthday, bmi, 
+      update_time, create_time)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gender,jdbcType=INTEGER}, 
+      #{sickAge,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE}, #{bmi,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.com.augmentum.backend.pojo.Patient" >
     insert into patient
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="patientId != null" >
-        patient_id,
+      <if test="id != null" >
+        id,
       </if>
-      <if test="patientName != null" >
-        patient_name,
+      <if test="name != null" >
+        name,
       </if>
-      <if test="patientGender != null" >
-        patient_gender,
+      <if test="gender != null" >
+        gender,
       </if>
-      <if test="patientSickAge != null" >
-        patient_sick_age,
+      <if test="sickAge != null" >
+        sick_age,
       </if>
-      <if test="patientBirthday != null" >
-        patient_birthday,
+      <if test="birthday != null" >
+        birthday,
       </if>
-      <if test="patientBmi != null" >
-        patient_bmi,
+      <if test="bmi != null" >
+        bmi,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="patientId != null" >
-        #{patientId,jdbcType=CHAR},
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
       </if>
-      <if test="patientName != null" >
-        #{patientName,jdbcType=VARCHAR},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="patientGender != null" >
-        #{patientGender,jdbcType=SMALLINT},
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
       </if>
-      <if test="patientSickAge != null" >
-        #{patientSickAge,jdbcType=VARCHAR},
+      <if test="sickAge != null" >
+        #{sickAge,jdbcType=VARCHAR},
       </if>
-      <if test="patientBirthday != null" >
-        #{patientBirthday,jdbcType=VARCHAR},
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
       </if>
-      <if test="patientBmi != null" >
-        #{patientBmi,jdbcType=INTEGER},
+      <if test="bmi != null" >
+        #{bmi,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -160,23 +174,29 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update patient
     <set >
-      <if test="record.patientId != null" >
-        patient_id = #{record.patientId,jdbcType=CHAR},
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.patientName != null" >
-        patient_name = #{record.patientName,jdbcType=VARCHAR},
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.patientGender != null" >
-        patient_gender = #{record.patientGender,jdbcType=SMALLINT},
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=INTEGER},
       </if>
-      <if test="record.patientSickAge != null" >
-        patient_sick_age = #{record.patientSickAge,jdbcType=VARCHAR},
+      <if test="record.sickAge != null" >
+        sick_age = #{record.sickAge,jdbcType=VARCHAR},
       </if>
-      <if test="record.patientBirthday != null" >
-        patient_birthday = #{record.patientBirthday,jdbcType=VARCHAR},
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=DATE},
       </if>
-      <if test="record.patientBmi != null" >
-        patient_bmi = #{record.patientBmi,jdbcType=INTEGER},
+      <if test="record.bmi != null" >
+        bmi = #{record.bmi,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -185,12 +205,14 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update patient
-    set patient_id = #{record.patientId,jdbcType=CHAR},
-      patient_name = #{record.patientName,jdbcType=VARCHAR},
-      patient_gender = #{record.patientGender,jdbcType=SMALLINT},
-      patient_sick_age = #{record.patientSickAge,jdbcType=VARCHAR},
-      patient_birthday = #{record.patientBirthday,jdbcType=VARCHAR},
-      patient_bmi = #{record.patientBmi,jdbcType=INTEGER}
+    set id = #{record.id,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=INTEGER},
+      sick_age = #{record.sickAge,jdbcType=VARCHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      bmi = #{record.bmi,jdbcType=INTEGER},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -198,43 +220,39 @@
   <update id="updateByPrimaryKeySelective" parameterType="cn.com.augmentum.backend.pojo.Patient" >
     update patient
     <set >
-      <if test="patientName != null" >
-        patient_name = #{patientName,jdbcType=VARCHAR},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="patientGender != null" >
-        patient_gender = #{patientGender,jdbcType=SMALLINT},
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=INTEGER},
       </if>
-      <if test="patientSickAge != null" >
-        patient_sick_age = #{patientSickAge,jdbcType=VARCHAR},
+      <if test="sickAge != null" >
+        sick_age = #{sickAge,jdbcType=VARCHAR},
       </if>
-      <if test="patientBirthday != null" >
-        patient_birthday = #{patientBirthday,jdbcType=VARCHAR},
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
       </if>
-      <if test="patientBmi != null" >
-        patient_bmi = #{patientBmi,jdbcType=INTEGER},
+      <if test="bmi != null" >
+        bmi = #{bmi,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where patient_id = #{patientId,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.com.augmentum.backend.pojo.Patient" >
     update patient
-    set patient_name = #{patientName,jdbcType=VARCHAR},
-      patient_gender = #{patientGender,jdbcType=SMALLINT},
-      patient_sick_age = #{patientSickAge,jdbcType=VARCHAR},
-      patient_birthday = #{patientBirthday,jdbcType=VARCHAR},
-      patient_bmi = #{patientBmi,jdbcType=INTEGER}
-    where patient_id = #{patientId,jdbcType=CHAR}
+    set name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=INTEGER},
+      sick_age = #{sickAge,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      bmi = #{bmi,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=VARCHAR}
   </update>
-
-
-
-  <select id="selectALl" resultMap="BaseResultMap" >
-    select
-    <include refid="Base_Column_List" />
-    from patient
-  </select>
-
-
-
-
 </mapper>

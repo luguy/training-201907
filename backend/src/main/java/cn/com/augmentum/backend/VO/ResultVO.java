@@ -3,7 +3,6 @@ package cn.com.augmentum.backend.VO;
 import lombok.Data;
 
 /**
- *
  * outermost object returned by http request
  * Created by  tim
  * 2019-07-24 14:13
@@ -11,13 +10,19 @@ import lombok.Data;
 @Data
 public class ResultVO<T> {
 
-    /** error code */
+    /**
+     * error code
+     */
     private Integer code;
 
-    /** Prompt information */
+    /**
+     * Prompt information
+     */
     private String msg;
 
-    /** content */
+    /**
+     * content
+     */
     private T data;
 
     public static <T> ResultVO success(T t) {

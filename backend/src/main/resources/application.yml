@@ -4,3 +4,28 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+
+server:
+  port: 8888
+
+# mybatis
+mybatis
+  type-aliases-package: cn.com.augmentum.backend.pojo
+  mapperLocations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    default-fetch-size: 100
+    default-statement-timeout: 3000
+
+
+#configure data source
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: 980123
+    driverClassName: org.postgresql.Driver
+
+

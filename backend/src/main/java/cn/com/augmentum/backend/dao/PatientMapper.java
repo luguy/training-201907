@@ -10,7 +10,7 @@ public interface PatientMapper {
 
     int deleteByExample(PatientExample example);
 
-    int deleteByPrimaryKey(String patientId);
+    int deleteByPrimaryKey(String id);
 
     int insert(Patient record);
 
@@ -18,7 +18,7 @@ public interface PatientMapper {
 
     List<Patient> selectByExample(PatientExample example);
 
-    Patient selectByPrimaryKey(String patientId);
+    Patient selectByPrimaryKey(String id);
 
     int updateByExampleSelective(@Param("record") Patient record, @Param("example") PatientExample example);
 
@@ -27,6 +27,4 @@ public interface PatientMapper {
     int updateByPrimaryKeySelective(Patient record);
 
     int updateByPrimaryKey(Patient record);
-
-    List<Patient> selectAll();
 }

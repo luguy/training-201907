@@ -1,6 +1,8 @@
 package cn.com.augmentum.backend.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class PatientExample {
@@ -104,403 +106,539 @@ public class PatientExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andPatientIdIsNull() {
-            addCriterion("patient_id is null");
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
+        }
+
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdEqualTo(String value) {
+            addCriterion("id =", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotEqualTo(String value) {
+            addCriterion("id <>", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThan(String value) {
+            addCriterion("id >", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdGreaterThanOrEqualTo(String value) {
+            addCriterion("id >=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThan(String value) {
+            addCriterion("id <", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLessThanOrEqualTo(String value) {
+            addCriterion("id <=", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdLike(String value) {
+            addCriterion("id like", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotLike(String value) {
+            addCriterion("id not like", value, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdIn(List<String> values) {
+            addCriterion("id in", values, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotIn(List<String> values) {
+            addCriterion("id not in", values, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdBetween(String value1, String value2) {
+            addCriterion("id between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andIdNotBetween(String value1, String value2) {
+            addCriterion("id not between", value1, value2, "id");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdIsNotNull() {
-            addCriterion("patient_id is not null");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdEqualTo(String value) {
-            addCriterion("patient_id =", value, "patientId");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdNotEqualTo(String value) {
-            addCriterion("patient_id <>", value, "patientId");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdGreaterThan(String value) {
-            addCriterion("patient_id >", value, "patientId");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdGreaterThanOrEqualTo(String value) {
-            addCriterion("patient_id >=", value, "patientId");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdLessThan(String value) {
-            addCriterion("patient_id <", value, "patientId");
+        public Criteria andGenderIsNull() {
+            addCriterion("gender is null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdLessThanOrEqualTo(String value) {
-            addCriterion("patient_id <=", value, "patientId");
+        public Criteria andGenderIsNotNull() {
+            addCriterion("gender is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdLike(String value) {
-            addCriterion("patient_id like", value, "patientId");
+        public Criteria andGenderEqualTo(Integer value) {
+            addCriterion("gender =", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdNotLike(String value) {
-            addCriterion("patient_id not like", value, "patientId");
+        public Criteria andGenderNotEqualTo(Integer value) {
+            addCriterion("gender <>", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdIn(List<String> values) {
-            addCriterion("patient_id in", values, "patientId");
+        public Criteria andGenderGreaterThan(Integer value) {
+            addCriterion("gender >", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdNotIn(List<String> values) {
-            addCriterion("patient_id not in", values, "patientId");
+        public Criteria andGenderGreaterThanOrEqualTo(Integer value) {
+            addCriterion("gender >=", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdBetween(String value1, String value2) {
-            addCriterion("patient_id between", value1, value2, "patientId");
+        public Criteria andGenderLessThan(Integer value) {
+            addCriterion("gender <", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andPatientIdNotBetween(String value1, String value2) {
-            addCriterion("patient_id not between", value1, value2, "patientId");
+        public Criteria andGenderLessThanOrEqualTo(Integer value) {
+            addCriterion("gender <=", value, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameIsNull() {
-            addCriterion("patient_name is null");
+        public Criteria andGenderIn(List<Integer> values) {
+            addCriterion("gender in", values, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameIsNotNull() {
-            addCriterion("patient_name is not null");
+        public Criteria andGenderNotIn(List<Integer> values) {
+            addCriterion("gender not in", values, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameEqualTo(String value) {
-            addCriterion("patient_name =", value, "patientName");
+        public Criteria andGenderBetween(Integer value1, Integer value2) {
+            addCriterion("gender between", value1, value2, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameNotEqualTo(String value) {
-            addCriterion("patient_name <>", value, "patientName");
+        public Criteria andGenderNotBetween(Integer value1, Integer value2) {
+            addCriterion("gender not between", value1, value2, "gender");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameGreaterThan(String value) {
-            addCriterion("patient_name >", value, "patientName");
+        public Criteria andSickAgeIsNull() {
+            addCriterion("sick_age is null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameGreaterThanOrEqualTo(String value) {
-            addCriterion("patient_name >=", value, "patientName");
+        public Criteria andSickAgeIsNotNull() {
+            addCriterion("sick_age is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameLessThan(String value) {
-            addCriterion("patient_name <", value, "patientName");
+        public Criteria andSickAgeEqualTo(String value) {
+            addCriterion("sick_age =", value, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameLessThanOrEqualTo(String value) {
-            addCriterion("patient_name <=", value, "patientName");
+        public Criteria andSickAgeNotEqualTo(String value) {
+            addCriterion("sick_age <>", value, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameLike(String value) {
-            addCriterion("patient_name like", value, "patientName");
+        public Criteria andSickAgeGreaterThan(String value) {
+            addCriterion("sick_age >", value, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameNotLike(String value) {
-            addCriterion("patient_name not like", value, "patientName");
+        public Criteria andSickAgeGreaterThanOrEqualTo(String value) {
+            addCriterion("sick_age >=", value, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameIn(List<String> values) {
-            addCriterion("patient_name in", values, "patientName");
+        public Criteria andSickAgeLessThan(String value) {
+            addCriterion("sick_age <", value, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameNotIn(List<String> values) {
-            addCriterion("patient_name not in", values, "patientName");
+        public Criteria andSickAgeLessThanOrEqualTo(String value) {
+            addCriterion("sick_age <=", value, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameBetween(String value1, String value2) {
-            addCriterion("patient_name between", value1, value2, "patientName");
+        public Criteria andSickAgeLike(String value) {
+            addCriterion("sick_age like", value, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientNameNotBetween(String value1, String value2) {
-            addCriterion("patient_name not between", value1, value2, "patientName");
+        public Criteria andSickAgeNotLike(String value) {
+            addCriterion("sick_age not like", value, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderIsNull() {
-            addCriterion("patient_gender is null");
+        public Criteria andSickAgeIn(List<String> values) {
+            addCriterion("sick_age in", values, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderIsNotNull() {
-            addCriterion("patient_gender is not null");
+        public Criteria andSickAgeNotIn(List<String> values) {
+            addCriterion("sick_age not in", values, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderEqualTo(Short value) {
-            addCriterion("patient_gender =", value, "patientGender");
+        public Criteria andSickAgeBetween(String value1, String value2) {
+            addCriterion("sick_age between", value1, value2, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderNotEqualTo(Short value) {
-            addCriterion("patient_gender <>", value, "patientGender");
+        public Criteria andSickAgeNotBetween(String value1, String value2) {
+            addCriterion("sick_age not between", value1, value2, "sickAge");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderGreaterThan(Short value) {
-            addCriterion("patient_gender >", value, "patientGender");
+        public Criteria andBirthdayIsNull() {
+            addCriterion("birthday is null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderGreaterThanOrEqualTo(Short value) {
-            addCriterion("patient_gender >=", value, "patientGender");
+        public Criteria andBirthdayIsNotNull() {
+            addCriterion("birthday is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderLessThan(Short value) {
-            addCriterion("patient_gender <", value, "patientGender");
+        public Criteria andBirthdayEqualTo(Date value) {
+            addCriterionForJDBCDate("birthday =", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderLessThanOrEqualTo(Short value) {
-            addCriterion("patient_gender <=", value, "patientGender");
+        public Criteria andBirthdayNotEqualTo(Date value) {
+            addCriterionForJDBCDate("birthday <>", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderIn(List<Short> values) {
-            addCriterion("patient_gender in", values, "patientGender");
+        public Criteria andBirthdayGreaterThan(Date value) {
+            addCriterionForJDBCDate("birthday >", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderNotIn(List<Short> values) {
-            addCriterion("patient_gender not in", values, "patientGender");
+        public Criteria andBirthdayGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("birthday >=", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderBetween(Short value1, Short value2) {
-            addCriterion("patient_gender between", value1, value2, "patientGender");
+        public Criteria andBirthdayLessThan(Date value) {
+            addCriterionForJDBCDate("birthday <", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andPatientGenderNotBetween(Short value1, Short value2) {
-            addCriterion("patient_gender not between", value1, value2, "patientGender");
+        public Criteria andBirthdayLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("birthday <=", value, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeIsNull() {
-            addCriterion("patient_sick_age is null");
+        public Criteria andBirthdayIn(List<Date> values) {
+            addCriterionForJDBCDate("birthday in", values, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeIsNotNull() {
-            addCriterion("patient_sick_age is not null");
+        public Criteria andBirthdayNotIn(List<Date> values) {
+            addCriterionForJDBCDate("birthday not in", values, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeEqualTo(String value) {
-            addCriterion("patient_sick_age =", value, "patientSickAge");
+        public Criteria andBirthdayBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("birthday between", value1, value2, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeNotEqualTo(String value) {
-            addCriterion("patient_sick_age <>", value, "patientSickAge");
+        public Criteria andBirthdayNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("birthday not between", value1, value2, "birthday");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeGreaterThan(String value) {
-            addCriterion("patient_sick_age >", value, "patientSickAge");
+        public Criteria andBmiIsNull() {
+            addCriterion("bmi is null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeGreaterThanOrEqualTo(String value) {
-            addCriterion("patient_sick_age >=", value, "patientSickAge");
+        public Criteria andBmiIsNotNull() {
+            addCriterion("bmi is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeLessThan(String value) {
-            addCriterion("patient_sick_age <", value, "patientSickAge");
+        public Criteria andBmiEqualTo(Integer value) {
+            addCriterion("bmi =", value, "bmi");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeLessThanOrEqualTo(String value) {
-            addCriterion("patient_sick_age <=", value, "patientSickAge");
+        public Criteria andBmiNotEqualTo(Integer value) {
+            addCriterion("bmi <>", value, "bmi");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeLike(String value) {
-            addCriterion("patient_sick_age like", value, "patientSickAge");
+        public Criteria andBmiGreaterThan(Integer value) {
+            addCriterion("bmi >", value, "bmi");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeNotLike(String value) {
-            addCriterion("patient_sick_age not like", value, "patientSickAge");
+        public Criteria andBmiGreaterThanOrEqualTo(Integer value) {
+            addCriterion("bmi >=", value, "bmi");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeIn(List<String> values) {
-            addCriterion("patient_sick_age in", values, "patientSickAge");
+        public Criteria andBmiLessThan(Integer value) {
+            addCriterion("bmi <", value, "bmi");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeNotIn(List<String> values) {
-            addCriterion("patient_sick_age not in", values, "patientSickAge");
+        public Criteria andBmiLessThanOrEqualTo(Integer value) {
+            addCriterion("bmi <=", value, "bmi");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeBetween(String value1, String value2) {
-            addCriterion("patient_sick_age between", value1, value2, "patientSickAge");
+        public Criteria andBmiIn(List<Integer> values) {
+            addCriterion("bmi in", values, "bmi");
             return (Criteria) this;
         }
 
-        public Criteria andPatientSickAgeNotBetween(String value1, String value2) {
-            addCriterion("patient_sick_age not between", value1, value2, "patientSickAge");
+        public Criteria andBmiNotIn(List<Integer> values) {
+            addCriterion("bmi not in", values, "bmi");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayIsNull() {
-            addCriterion("patient_birthday is null");
+        public Criteria andBmiBetween(Integer value1, Integer value2) {
+            addCriterion("bmi between", value1, value2, "bmi");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayIsNotNull() {
-            addCriterion("patient_birthday is not null");
+        public Criteria andBmiNotBetween(Integer value1, Integer value2) {
+            addCriterion("bmi not between", value1, value2, "bmi");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayEqualTo(String value) {
-            addCriterion("patient_birthday =", value, "patientBirthday");
+        public Criteria andUpdateTimeIsNull() {
+            addCriterion("update_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayNotEqualTo(String value) {
-            addCriterion("patient_birthday <>", value, "patientBirthday");
+        public Criteria andUpdateTimeIsNotNull() {
+            addCriterion("update_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayGreaterThan(String value) {
-            addCriterion("patient_birthday >", value, "patientBirthday");
+        public Criteria andUpdateTimeEqualTo(Date value) {
+            addCriterion("update_time =", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayGreaterThanOrEqualTo(String value) {
-            addCriterion("patient_birthday >=", value, "patientBirthday");
+        public Criteria andUpdateTimeNotEqualTo(Date value) {
+            addCriterion("update_time <>", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayLessThan(String value) {
-            addCriterion("patient_birthday <", value, "patientBirthday");
+        public Criteria andUpdateTimeGreaterThan(Date value) {
+            addCriterion("update_time >", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayLessThanOrEqualTo(String value) {
-            addCriterion("patient_birthday <=", value, "patientBirthday");
+        public Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("update_time >=", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayLike(String value) {
-            addCriterion("patient_birthday like", value, "patientBirthday");
+        public Criteria andUpdateTimeLessThan(Date value) {
+            addCriterion("update_time <", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayNotLike(String value) {
-            addCriterion("patient_birthday not like", value, "patientBirthday");
+        public Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("update_time <=", value, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayIn(List<String> values) {
-            addCriterion("patient_birthday in", values, "patientBirthday");
+        public Criteria andUpdateTimeIn(List<Date> values) {
+            addCriterion("update_time in", values, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayNotIn(List<String> values) {
-            addCriterion("patient_birthday not in", values, "patientBirthday");
+        public Criteria andUpdateTimeNotIn(List<Date> values) {
+            addCriterion("update_time not in", values, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayBetween(String value1, String value2) {
-            addCriterion("patient_birthday between", value1, value2, "patientBirthday");
+        public Criteria andUpdateTimeBetween(Date value1, Date value2) {
+            addCriterion("update_time between", value1, value2, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBirthdayNotBetween(String value1, String value2) {
-            addCriterion("patient_birthday not between", value1, value2, "patientBirthday");
+        public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("update_time not between", value1, value2, "updateTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiIsNull() {
-            addCriterion("patient_bmi is null");
+        public Criteria andCreateTimeIsNull() {
+            addCriterion("create_time is null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiIsNotNull() {
-            addCriterion("patient_bmi is not null");
+        public Criteria andCreateTimeIsNotNull() {
+            addCriterion("create_time is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiEqualTo(Integer value) {
-            addCriterion("patient_bmi =", value, "patientBmi");
+        public Criteria andCreateTimeEqualTo(Date value) {
+            addCriterion("create_time =", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiNotEqualTo(Integer value) {
-            addCriterion("patient_bmi <>", value, "patientBmi");
+        public Criteria andCreateTimeNotEqualTo(Date value) {
+            addCriterion("create_time <>", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiGreaterThan(Integer value) {
-            addCriterion("patient_bmi >", value, "patientBmi");
+        public Criteria andCreateTimeGreaterThan(Date value) {
+            addCriterion("create_time >", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiGreaterThanOrEqualTo(Integer value) {
-            addCriterion("patient_bmi >=", value, "patientBmi");
+        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("create_time >=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiLessThan(Integer value) {
-            addCriterion("patient_bmi <", value, "patientBmi");
+        public Criteria andCreateTimeLessThan(Date value) {
+            addCriterion("create_time <", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiLessThanOrEqualTo(Integer value) {
-            addCriterion("patient_bmi <=", value, "patientBmi");
+        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+            addCriterion("create_time <=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiIn(List<Integer> values) {
-            addCriterion("patient_bmi in", values, "patientBmi");
+        public Criteria andCreateTimeIn(List<Date> values) {
+            addCriterion("create_time in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiNotIn(List<Integer> values) {
-            addCriterion("patient_bmi not in", values, "patientBmi");
+        public Criteria andCreateTimeNotIn(List<Date> values) {
+            addCriterion("create_time not in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiBetween(Integer value1, Integer value2) {
-            addCriterion("patient_bmi between", value1, value2, "patientBmi");
+        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+            addCriterion("create_time between", value1, value2, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andPatientBmiNotBetween(Integer value1, Integer value2) {
-            addCriterion("patient_bmi not between", value1, value2, "patientBmi");
+        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+            addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
     }

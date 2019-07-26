@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.augmentum.backend.dao.DeptMapperCustom" >
+    <resultMap id="BaseResultMap" type="cn.com.augmentum.backend.pojo.Dept" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="area" property="area" jdbcType="VARCHAR" />
+        <result column="num" property="num" jdbcType="INTEGER" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, name, area, num, update_time, create_time
+    </sql>
+
+
+</mapper>
