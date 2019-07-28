@@ -1,6 +1,8 @@
-package cn.com.augmentum.backend.VO;
+package cn.com.augmentum.backend.vo;
 
 import lombok.Data;
+
+import java.util.Date;
 
 /**
  * @author tim
@@ -11,19 +13,25 @@ import lombok.Data;
 @Data
 public class RegisterVO {
 
-    private String registerDoctor;
+    private String id;
 
-    private String registerDept;
+    private Integer num;
 
-    private String registerPatient;
+    private String doctorId;
 
-    private Integer registerCost;
+    private String deptId;
 
-    private String registerOperator;
+    private String patientId;
 
-    private String registerType;
+    private String patientName;
 
-    private String registerStatus;
+    private Double cost;
 
-    private String registerTime;
+    private String operator;
+
+    private Integer type;
+
+    private Integer status;
+
+    private Date createTime;
 }

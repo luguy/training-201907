@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.augmentum.backend.dao.RegisterMapperCustom" >
+    <resultMap id="BaseResultMap" type="cn.com.augmentum.backend.pojo.Register" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="num" property="num" jdbcType="VARCHAR" />
+        <result column="doctor_id" property="doctorId" jdbcType="VARCHAR" />
+        <result column="dept_id" property="deptId" jdbcType="VARCHAR" />
+        <result column="patient_id" property="patientId" jdbcType="VARCHAR" />
+        <result column="patient_name" property="patientName" jdbcType="VARCHAR" />
+        <result column="cost" property="cost" jdbcType="DOUBLE" />
+        <result column="operator" property="operator" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+      id, num, doctor_id, dept_id, patient_id, patient_name, cost, operator, type, status, update_time,
+      create_time
+    </sql>
+
+
+    <sql id="Where_Clause" >
+        <where >
+            <trim prefixOverrides="and" >
+                <if test="register.doctorId != null" >
+                    and doctor_id = #{register.id,jdbcType=VARCHAR}
+                </if>
+                <if test="register.deptId != null" >
+                    and dept_id = #{register.deptId,jdbcType=VARCHAR}
+                </if>
+                <if test="register.patientName != null" >
+                    and patient_name like #{register.patientName}
+                </if>
+                <if test="register.status != null" >
+                    and status = #{register.status,jdbcType=INTEGER}
+                </if>
+                <if test="register.createTime != null" >
+                    and create_time = #{register.createTime,jdbcType=TIMESTAMP}
+                </if>
+            </trim>
+        </where>
+    </sql>
+
+
+
+    <select id="selectByCondition" resultMap="BaseResultMap" parameterType="cn.com.augmentum.backend.pojo.Register" >
+        select
+        <include refid="Base_Column_List" />
+        from register
+        <if test="register != null" >
+            <include refid="Where_Clause" />
+        </if>
+    </select>
+
+
+    <select id="selectStatusByPrimaryKey" resultType="java.lang.Integer" parameterType="java.lang.String" >
+        select
+        status
+        from register
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectMaxNumByDeptId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from register
+        where
+        create_time = (select  MAX(create_time) from register where dept_id = #{id,jdbcType=VARCHAR})
+    </select>
+</mapper>

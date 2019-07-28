@@ -13,5 +13,11 @@
         id, name, area, num, update_time, create_time
     </sql>
 
+    <select id="selectNumByPrimaryKey" resultType="java.lang.Integer" parameterType="java.lang.String" >
+        select
+        num
+        from dept
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
 
 </mapper>

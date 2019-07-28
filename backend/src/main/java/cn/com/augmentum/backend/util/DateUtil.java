@@ -26,19 +26,28 @@ public class DateUtil {
         return Integer.parseInt(String.valueOf(between_days));
     }
 
+
+    public static Boolean noNewDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        Long time1 = Long.parseLong(sdf.format(date));
+        Long time2 = Long.parseLong(sdf.format(new Date()));
+
+        if(time1.equals(time2)){
+            return false;
+        }
+
+        return true;
+    }
+
     public static String getDateNow() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         return sdf.format(new Date());
     }
 
-    public static String getDate() {
+    public static String getDateFomat() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return sdf.format(new Date());
     }
 
-
-    public static void main(String[] args) {
-        System.out.println(getDate());
-    }
 
 }

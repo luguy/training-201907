@@ -13,8 +13,8 @@ public enum RegisterStatusEnum implements CodeEnum{
 
     UNPAID(0,"Unpaid"),
     START(1,"Waiting to see a doctor"),
-    INVALIDATED(2,"Has been invalidated"),
-    END(3,"Have seen a doctor");
+    END(2,"Have seen a doctor"),
+    INVALIDATED(3,"Has been invalidated");
 
     private Integer code;
 

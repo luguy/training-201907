@@ -1,12 +1,8 @@
-package cn.com.augmentum.backend.VO;
+package cn.com.augmentum.backend.vo;
 
+import cn.com.augmentum.backend.enums.ResultEnum;
 import lombok.Data;
 
-/**
- * outermost object returned by http request
- * Created by  tim
- * 2019-07-24 14:13
- */
 @Data
 public class ResultVO<T> {
 
@@ -28,8 +24,8 @@ public class ResultVO<T> {
     public static <T> ResultVO success(T t) {
         ResultVO resultVO = new ResultVO();
         resultVO.setData(t);
-        resultVO.setCode(0);
-        resultVO.setMsg("successful");
+        resultVO.setCode(ResultEnum.SUCCESS.getCode());
+        resultVO.setMsg(ResultEnum.SUCCESS.getMessage());
         return resultVO;
     }
 
@@ -37,9 +33,9 @@ public class ResultVO<T> {
         return success(null);
     }
 
-    public static ResultVO error(String msg) {
+    public static ResultVO error(Integer code, String msg) {
         ResultVO resultVO = new ResultVO();
-        resultVO.setCode(1);
+        resultVO.setCode(code);
         resultVO.setMsg(msg);
         return resultVO;
     }

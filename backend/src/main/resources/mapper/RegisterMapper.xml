@@ -3,10 +3,11 @@
 <mapper namespace="cn.com.augmentum.backend.dao.RegisterMapper" >
   <resultMap id="BaseResultMap" type="cn.com.augmentum.backend.pojo.Register" >
     <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="VARCHAR" />
     <result column="doctor_id" property="doctorId" jdbcType="VARCHAR" />
     <result column="dept_id" property="deptId" jdbcType="VARCHAR" />
     <result column="patient_id" property="patientId" jdbcType="VARCHAR" />
+    <result column="patient_name" property="patientName" jdbcType="VARCHAR" />
     <result column="cost" property="cost" jdbcType="DOUBLE" />
     <result column="operator" property="operator" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
@@ -73,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, num, doctor_id, dept_id, patient_id, cost, operator, type, status, update_time, 
+    id, num, doctor_id, dept_id, patient_id, patient_name, cost, operator, type, status, update_time,
     create_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.com.augmentum.backend.pojo.RegisterExample" >
@@ -108,13 +109,13 @@
   </delete>
   <insert id="insert" parameterType="cn.com.augmentum.backend.pojo.Register" >
     insert into register (id, num, doctor_id, 
-      dept_id, patient_id, cost, 
+      dept_id, patient_id,patient_name, cost,
       operator, type, status, 
       update_time, create_time)
-    values (#{id,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, #{doctorId,jdbcType=VARCHAR}, 
-      #{deptId,jdbcType=VARCHAR}, #{patientId,jdbcType=VARCHAR}, #{cost,jdbcType=DOUBLE}, 
+    values (#{id,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR}, #{doctorId,jdbcType=VARCHAR},
+      #{deptId,jdbcType=VARCHAR}, #{patientId,jdbcType=VARCHAR}, #{patientName,jdbcType=VARCHAR}, #{cost,jdbcType=DOUBLE},
       #{operator,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}
   </insert>
   <insert id="insertSelective" parameterType="cn.com.augmentum.backend.pojo.Register" >
     insert into register
@@ -133,6 +134,9 @@
       </if>
       <if test="patientId != null" >
         patient_id,
+      </if>
+      <if test="patientName != null" >
+        patient_name,
       </if>
       <if test="cost != null" >
         cost,
@@ -158,7 +162,7 @@
         #{id,jdbcType=VARCHAR},
       </if>
       <if test="num != null" >
-        #{num,jdbcType=INTEGER},
+        #{num,jdbcType=VARCHAR},
       </if>
       <if test="doctorId != null" >
         #{doctorId,jdbcType=VARCHAR},
@@ -168,6 +172,9 @@
       </if>
       <if test="patientId != null" >
         #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null" >
+        #{patientName,jdbcType=VARCHAR},
       </if>
       <if test="cost != null" >
         #{cost,jdbcType=DOUBLE},
@@ -202,7 +209,7 @@
         id = #{record.id,jdbcType=VARCHAR},
       </if>
       <if test="record.num != null" >
-        num = #{record.num,jdbcType=INTEGER},
+        num = #{record.num,jdbcType=VARCHAR},
       </if>
       <if test="record.doctorId != null" >
         doctor_id = #{record.doctorId,jdbcType=VARCHAR},
@@ -212,6 +219,9 @@
       </if>
       <if test="record.patientId != null" >
         patient_id = #{record.patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.patientName != null" >
+        patient_Name = #{patientName,jdbcType=VARCHAR},
       </if>
       <if test="record.cost != null" >
         cost = #{record.cost,jdbcType=DOUBLE},
@@ -239,10 +249,11 @@
   <update id="updateByExample" parameterType="map" >
     update register
     set id = #{record.id,jdbcType=VARCHAR},
-      num = #{record.num,jdbcType=INTEGER},
+      num = #{record.num,jdbcType=VARCHAR},
       doctor_id = #{record.doctorId,jdbcType=VARCHAR},
       dept_id = #{record.deptId,jdbcType=VARCHAR},
       patient_id = #{record.patientId,jdbcType=VARCHAR},
+    patient_name = #{record.patientName,jdbcType=VARCHAR},
       cost = #{record.cost,jdbcType=DOUBLE},
       operator = #{record.operator,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
@@ -257,7 +268,7 @@
     update register
     <set >
       <if test="num != null" >
-        num = #{num,jdbcType=INTEGER},
+        num = #{num,jdbcType=VARCHAR},
       </if>
       <if test="doctorId != null" >
         doctor_id = #{doctorId,jdbcType=VARCHAR},
@@ -267,6 +278,9 @@
       </if>
       <if test="patientId != null" >
         patient_id = #{patientId,jdbcType=VARCHAR},
+      </if>
+      <if test="patientName != null" >
+        patient_name = #{patientName,jdbcType=VARCHAR},
       </if>
       <if test="cost != null" >
         cost = #{cost,jdbcType=DOUBLE},
@@ -291,10 +305,11 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.com.augmentum.backend.pojo.Register" >
     update register
-    set num = #{num,jdbcType=INTEGER},
+    set num = #{num,jdbcType=VARCHAR},
       doctor_id = #{doctorId,jdbcType=VARCHAR},
       dept_id = #{deptId,jdbcType=VARCHAR},
       patient_id = #{patientId,jdbcType=VARCHAR},
+      patient_name = #{patientName,jdbcType=VARCHAR},
       cost = #{cost,jdbcType=DOUBLE},
       operator = #{operator,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
