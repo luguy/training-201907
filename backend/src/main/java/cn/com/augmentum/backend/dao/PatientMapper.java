@@ -1,7 +1,7 @@
 package cn.com.augmentum.backend.dao;
 
-import cn.com.augmentum.backend.pojo.Patient;
-import cn.com.augmentum.backend.pojo.PatientExample;
+import cn.com.augmentum.backend.model.Patient;
+import cn.com.augmentum.backend.model.PatientExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

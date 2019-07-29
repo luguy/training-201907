@@ -1,7 +1,7 @@
 package cn.com.augmentum.backend.dao;
 
-import cn.com.augmentum.backend.pojo.Doctor;
-import cn.com.augmentum.backend.pojo.DoctorExample;
+import cn.com.augmentum.backend.model.Doctor;
+import cn.com.augmentum.backend.model.DoctorExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,4 +27,5 @@ public interface DoctorMapper {
     int updateByPrimaryKeySelective(Doctor record);
 
     int updateByPrimaryKey(Doctor record);
+
 }

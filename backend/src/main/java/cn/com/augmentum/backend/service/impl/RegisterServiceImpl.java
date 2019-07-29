@@ -11,7 +11,7 @@ import cn.com.augmentum.backend.dao.RegisterMapper;
 import cn.com.augmentum.backend.pageUtil.PageRequest;
 import cn.com.augmentum.backend.pageUtil.PageResult;
 import cn.com.augmentum.backend.pageUtil.PageUtils;
-import cn.com.augmentum.backend.pojo.Register;
+import cn.com.augmentum.backend.model.Register;
 import cn.com.augmentum.backend.service.RegisterService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -79,13 +79,36 @@ public class RegisterServiceImpl implements RegisterService {
 
         Integer status=registerMapperCustom.selectStatusByPrimaryKey(register.getId());
 
-        if(register.getStatus() == RegisterStatusEnum.INVALIDATED.getCode() || register.getStatus() > (status + number)){
+        //Illegal rollback of state
+        if(register.getStatus() >= number && register.getStatus()<= status){
+            throw new TrainingException(ResultEnum.STATUS_ERROR);
+        }
+
+        //Status has been invalidated or status update has exceeded its authority
+        if(status == RegisterStatusEnum.INVALIDATED.getCode() || register.getStatus() > (status + number)){
             throw new TrainingException(ResultEnum.STATUS_ERROR);
         }
 
         registerMapper.updateByPrimaryKeySelective(register);
-
     }
+
+    @Override
+    @Transactional
+    public void deleteRegister(String id) {
+        Integer status=registerMapperCustom.selectStatusByPrimaryKey(id);
+
+        if(status != RegisterStatusEnum.WAITING.getCode()){
+            throw new TrainingException(ResultEnum.STATUS_ERROR);
+        }
+
+        registerMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Integer> findAllStatus() {
+        return registerMapperCustom.selectAllStatus();
+    }
+
 
     private PageResult selectListPage(HashMap<Object, Object> hashMap, PageRequest pageRequest){
         PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
@@ -97,10 +120,6 @@ public class RegisterServiceImpl implements RegisterService {
     //Generate order number based on department
     private String registrationGenerate(String deptId){
         Integer deptNum = deptService.findNumById(deptId);
-
-        if(deptNum == null){
-            throw new TrainingException(ResultEnum.DEPT_NOT_EXIST);
-        }
 
         Register register = registerMapperCustom.selectMaxNumByDeptId(deptId);
         if(register == null || DateUtil.noNewDate(register.getCreateTime())){

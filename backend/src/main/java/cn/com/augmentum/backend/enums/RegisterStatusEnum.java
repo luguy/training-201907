@@ -11,10 +11,11 @@ import lombok.Getter;
 @Getter
 public enum RegisterStatusEnum implements CodeEnum{
 
-    UNPAID(0,"Unpaid"),
-    START(1,"Waiting to see a doctor"),
-    END(2,"Have seen a doctor"),
-    INVALIDATED(3,"Has been invalidated");
+    INVALIDATED(0,"Has been invalidated"),
+    UNPAID(1,"Unpaid"),
+    WAITING(2,"Waiting to see a doctor"),
+    FINISHED(3,"Have seen a doctor"),
+    ;
 
     private Integer code;
 

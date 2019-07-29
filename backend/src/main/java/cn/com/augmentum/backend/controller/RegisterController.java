@@ -5,7 +5,7 @@ import cn.com.augmentum.backend.pageUtil.PageResult;
 import cn.com.augmentum.backend.vo.RegisterVO;
 import cn.com.augmentum.backend.vo.ResultVO;
 import cn.com.augmentum.backend.pageUtil.PageRequest;
-import cn.com.augmentum.backend.pojo.Register;
+import cn.com.augmentum.backend.model.Register;
 import cn.com.augmentum.backend.service.RegisterService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +38,8 @@ public class RegisterController {
 
     @GetMapping("/list")
     public ResultVO registerList(RegisterVO registerVO,
-            @RequestParam(value = "page", defaultValue = "1") Integer page,
-            @RequestParam(value = "size", defaultValue = "2") Integer size){
+                                 @RequestParam(value = "page", defaultValue = "1") Integer page,
+                                 @RequestParam(value = "size", defaultValue = "2") Integer size){
         Register register = new Register();
         VOFindToRegister(registerVO, register);
         PageRequest pageRequest = new PageRequest(page,size);
@@ -62,7 +62,6 @@ public class RegisterController {
     @PutMapping("/status")
     public ResultVO registerUpdate(
             @RequestBody RegisterVO registerVO){
-
         Register register = new Register();
         VOFindToRegister(registerVO, register);
 
@@ -74,6 +73,26 @@ public class RegisterController {
         }
 
         return ResultVO.success();
+    }
+
+
+    @DeleteMapping("/")
+    public ResultVO registerDelete(
+            @RequestBody @RequestParam(value = "id", defaultValue = "1") String id){
+
+        try {
+            registerService.deleteRegister(id);
+        }catch (TrainingException e){
+            return ResultVO.error(e.getCode(), e.getMessage());
+        }
+
+        return ResultVO.success();
+    }
+
+    @GetMapping("/status")
+    public ResultVO findStatus(){
+        List<Integer> list = registerService.findAllStatus();
+        return ResultVO.success(list);
     }
 
 

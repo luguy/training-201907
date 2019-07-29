@@ -1,9 +1,13 @@
 package cn.com.augmentum.backend.service.impl;
 
 import cn.com.augmentum.backend.dao.DeptMapperCustom;
+import cn.com.augmentum.backend.enums.ResultEnum;
+import cn.com.augmentum.backend.exception.TrainingException;
 import cn.com.augmentum.backend.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 /**
  * @author luguy
@@ -20,7 +24,18 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public Integer findNumById(String deptId){
-        return deptMapperCustom.selectNumByPrimaryKey(deptId);
+        Integer deptNum = deptMapperCustom.selectNumByPrimaryKey(deptId);
+
+        if(deptNum == null){
+            throw new TrainingException(ResultEnum.DEPT_NOT_EXIST);
+        }
+
+        return deptNum;
+    }
+
+    @Override
+    public Set<String> findAllName() {
+        return deptMapperCustom.selectAllName();
     }
 
 

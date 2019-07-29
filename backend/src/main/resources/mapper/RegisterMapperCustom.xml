@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.com.augmentum.backend.dao.RegisterMapperCustom" >
-    <resultMap id="BaseResultMap" type="cn.com.augmentum.backend.pojo.Register" >
+    <resultMap id="BaseResultMap" type="cn.com.augmentum.backend.model.Register" >
         <id column="id" property="id" jdbcType="VARCHAR" />
         <result column="num" property="num" jdbcType="VARCHAR" />
         <result column="doctor_id" property="doctorId" jdbcType="VARCHAR" />
@@ -45,7 +45,7 @@
 
 
 
-    <select id="selectByCondition" resultMap="BaseResultMap" parameterType="cn.com.augmentum.backend.pojo.Register" >
+    <select id="selectByCondition" resultMap="BaseResultMap" parameterType="cn.com.augmentum.backend.model.Register" >
         select
         <include refid="Base_Column_List" />
         from register
@@ -61,6 +61,14 @@
         from register
         where id = #{id,jdbcType=VARCHAR}
     </select>
+
+
+    <select id="selectAllStatus" resultType="java.lang.Integer">
+        select
+        status
+        from register
+    </select>
+
 
     <select id="selectMaxNumByDeptId" resultMap="BaseResultMap" parameterType="java.lang.String" >
         select

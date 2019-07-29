@@ -1,14 +1,14 @@
 # pagehelper
-#pagehelper:
-#  helperDialect: postgresql
-#  reasonable: true
-#  supportMethodsArguments: true
-#  params: count=countSql
 pagehelper:
-  helperDialect: mysql
+  helperDialect: postgresql
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+#  params: count=countSql
 
 
 server:
@@ -16,7 +16,7 @@ server:
 
 # mybatis
 mybatis:
-  type-aliases-package: cn.com.augmentum.backend.pojo
+  type-aliases-package: cn.com.augmentum.backend.model
   mapperLocations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
@@ -25,19 +25,19 @@ mybatis:
 
 
 #configure data source
-#spring:
-#  datasource:
-#    platform: postgres
-#    url: jdbc:postgresql://localhost:5432/postgres
-#    username: postgres
-#    password: 980123
-#    driverClassName: org.postgresql.Driver
-
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    username: root
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
     password: 980123
-    url: jdbc:mysql://localhost/training?characterEncoding=utf-8&useSSL=false
+    driverClassName: org.postgresql.Driver
+
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    username: root
+#    password: 980123
+#    url: jdbc:mysql://localhost/training?characterEncoding=utf-8&useSSL=false
 
 

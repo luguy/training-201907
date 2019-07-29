@@ -1,14 +1,16 @@
-package cn.com.augmentum.backend.pojo;
+package cn.com.augmentum.backend.vo;
+
 
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class Register {
+public class RegisterVO {
+
     private String id;
 
-    private String num;
+    private Integer num;
 
     private String doctorId;
 
@@ -26,8 +28,5 @@ public class Register {
 
     private Integer status;
 
-    private Date updateTime;
-
     private Date createTime;
-
 }

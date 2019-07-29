@@ -85,12 +85,13 @@ return
     "code": 0,
     "msg": "Successful!",
     "data": null
+}    
 ```
 
 ###Update registration status
 
 ```
-Put /registration/status
+PUT /registration/status
 ```
 
 Parameters
@@ -107,4 +108,94 @@ return
     "code": 0,
     "msg": "Successful!",
     "data": null
+}    
+```
+
+###Delete registration
+
+```
+DELETE /registration/
+```
+
+Parameters
+
+```
+id: 4
+```
+
+return
+
+```
+{
+    "code": 0,
+    "msg": "Successful!",
+    "data": null
+}
+```
+
+###Query the name of the registration
+
+```
+GET /registration/status
+```
+
+Parameters
+
+```
+null
+```
+
+return
+
+```
+{
+    "code": 0,
+    "msg": "Successful!",
+    "data": null
+}    
+```
+
+
+###Query all department names
+
+```
+GET /dept/name
+```
+
+Parameters
+
+```
+null
+```
+
+return
+
+```
+{
+    "code": 0,
+    "msg": "Successful!",
+    "data": null
+}
+```
+
+###Query all doctor names
+
+```
+GET /doctor/name
+```
+
+Parameters
+
+```
+null
+```
+
+return
+
+```
+{
+    "code": 0,
+    "msg": "Successful!",
+    "data": null
+}
 ```

@@ -3,6 +3,8 @@ package cn.com.augmentum.backend.vo;
 import cn.com.augmentum.backend.enums.ResultEnum;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class ResultVO<T> {
 
@@ -39,4 +41,5 @@ public class ResultVO<T> {
         resultVO.setMsg(msg);
         return resultVO;
     }
+
 }

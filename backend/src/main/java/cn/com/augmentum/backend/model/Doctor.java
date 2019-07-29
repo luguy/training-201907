@@ -1,4 +1,4 @@
-package cn.com.augmentum.backend.pojo;
+package cn.com.augmentum.backend.model;
 
 import java.util.Date;
 

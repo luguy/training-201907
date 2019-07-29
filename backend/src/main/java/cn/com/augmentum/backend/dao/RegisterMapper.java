@@ -1,9 +1,8 @@
 package cn.com.augmentum.backend.dao;
 
-import cn.com.augmentum.backend.pojo.Register;
-import cn.com.augmentum.backend.pojo.RegisterExample;
+import cn.com.augmentum.backend.model.Register;
+import cn.com.augmentum.backend.model.RegisterExample;
 
-import java.util.HashMap;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

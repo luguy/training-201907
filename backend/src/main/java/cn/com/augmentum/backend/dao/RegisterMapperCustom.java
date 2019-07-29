@@ -1,6 +1,6 @@
 package cn.com.augmentum.backend.dao;
 
-import cn.com.augmentum.backend.pojo.Register;
+import cn.com.augmentum.backend.model.Register;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,5 +12,7 @@ public interface RegisterMapperCustom {
     Integer selectStatusByPrimaryKey(String id);
 
     Register selectMaxNumByDeptId(String deptId);
+
+    List<Integer> selectAllStatus();
 
 }

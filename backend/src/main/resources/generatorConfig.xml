@@ -23,7 +23,7 @@
         </javaTypeResolver>
 
         <!-- 生成Pojo包名和位置 -->
-        <javaModelGenerator targetPackage="cn.com.augmentum.backend.pojo"
+        <javaModelGenerator targetPackage="cn.com.augmentum.backend.model"
                             targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true" />
